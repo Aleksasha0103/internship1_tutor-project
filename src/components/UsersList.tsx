@@ -3,7 +3,7 @@ import UserCard from "@/components/UserCard";
 import { UserDataTypes } from "@/app/types/user";
 import { getUsers } from "@/app/services/getUsers";
 import { useState, useEffect } from "react";
-
+import PageWrapper from "./PageWrapper";
 interface UsersListProps {
   searchInput: string;
 }
@@ -29,7 +29,11 @@ export default function UsersList({ searchInput }: UsersListProps) {
       {foundUsers?.length === 0 ? (
         <p>There are no users with such name</p>
       ) : (
-        foundUsers?.map((user) => <UserCard key={user.id} user={user} />)
+        foundUsers?.map((user) => (
+          <PageWrapper key={user.id}>
+            <UserCard user={user} />
+          </PageWrapper>
+        ))
       )}
     </>
   );
