@@ -1,7 +1,6 @@
 import { UserDataTypes } from "@/app/types/user";
 import UserPage from "@/components/UserPage";
 import { getUsers } from "@/app/services/getUsers";
-import PageWrapper from "@/components/PageWrapper";
 
 interface UserPageByIdProps {
   params: {
@@ -16,8 +15,6 @@ export default async function UserPageById({ params }: UserPageByIdProps) {
   const userById: UserDataTypes | undefined = usersList?.find((user) => user.id === idNumber);
 
   return (
-    <PageWrapper>
-      {!userById ? <p>An error occurred while trying to connect to the server</p> : <UserPage user={userById} />}
-    </PageWrapper>
+    <>{!userById ? <p>An error occurred while trying to connect to the server</p> : <UserPage user={userById} />}</>
   );
 }
